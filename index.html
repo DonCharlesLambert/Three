@@ -7,21 +7,18 @@
 </head>
 <body style="margin: 0; height: 100vh; overflow: hidden;">
     <script src="js/three.js"></script>
+    <script src="js/inflate.min.js"></script>
+    <script src="https://threejs.org/examples/js/loaders/FBXLoader.js"></script>
     <script>
         let scene = new THREE.Scene()
         let camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 100)
         let renderer = new THREE.WebGLRenderer()
         renderer.setSize(window.innerWidth, window.innerHeight)
+        renderer.setClearColor('#ffffff', 1)
         document.body.appendChild(renderer.domElement)
 
-        let geometry = new THREE.BoxGeometry()
-        let material = new THREE.MeshBasicMaterial({color: '#ffff00'})
-        let cube = new THREE.Mesh(geometry, material)
-        scene.add(cube)
 
-        camera.position.z = 5;
-        let prevX = 0
-        let prevY = 0
+        camera.position.z = 10;
 
         let animate = () => {
             requestAnimationFrame(animate);
@@ -29,17 +26,39 @@
         }
         animate()
 
-        document.getElementsByTagName('body')[0].addEventListener('mousemove', (e) => {
-            cube.rotation.y += -(e.pageX - prevX)/100
-            cube.rotation.x += (e.pageY - prevY)/100
-            prevX = e.pageX
-            prevY = e.pageY
-        })
-        document.getElementsByTagName('body')[0].addEventListener('touchmove', (e) => {
-            cube.rotation.y += -(e.touches[0].clientX - prevX)/100
-            cube.rotation.x += (e.touches[0].clientY - prevY)/100
-            prevX = e.touches[0].clientX
-            prevY = e.touches[0].clientY
+        let createCube = () => {
+            let geometry = new THREE.BoxGeometry()
+            let material = new THREE.MeshBasicMaterial({color: '#ffff00'})
+            let cube = new THREE.Mesh(geometry, material)
+            scene.add(cube)
+            return cube;
+        }
+
+        let prevX = 0
+        let prevY = 0
+        let cubeRotation = (cube) => {
+            /*document.getElementsByTagName('body')[0].addEventListener('mousemove', (e) => {
+                cube.rotation.y += -(e.pageX - prevX)/100
+                cube.rotation.x += (e.pageY - prevY)/100
+                prevX = e.pageX
+                prevY = e.pageY
+            })*/
+            document.getElementsByTagName('body')[0].addEventListener('touchstart', (e) => {
+                prevX = e.touches[0].clientX
+                prevY = e.touches[0].clientY
+            })
+            document.getElementsByTagName('body')[0].addEventListener('touchmove', (e) => {
+                cube.rotation.y += -(e.touches[0].clientX - prevX)/100
+                cube.rotation.x += (e.touches[0].clientY - prevY)/100
+                prevX = e.touches[0].clientX
+                prevY = e.touches[0].clientY
+            })
+        }
+
+        let loader = new THREE.FBXLoader()
+        loader.load('models/Retro.fbx', (fbx) => {
+            cubeRotation(fbx)
+            scene.add(fbx)
         })
     </script>
 </body>
