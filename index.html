@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bobby with the Cube</title>
+</head>
+<body style="margin: 0; height: 100vh; overflow: hidden;">
+    <script src="js/three.js"></script>
+    <script>
+        let scene = new THREE.Scene()
+        let camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 100)
+        let renderer = new THREE.WebGLRenderer()
+        renderer.setSize(window.innerWidth, window.innerHeight)
+        document.body.appendChild(renderer.domElement)
+
+        let geometry = new THREE.BoxGeometry()
+        let material = new THREE.MeshBasicMaterial({color: '#ffff00'})
+        let cube = new THREE.Mesh(geometry, material)
+        scene.add(cube)
+
+        camera.position.z = 5;
+        let prevX = 0
+        let prevY = 0
+
+        let animate = () => {
+            requestAnimationFrame(animate);
+            renderer.render(scene, camera)
+        }
+        animate()
+
+        document.getElementsByTagName('body')[0].addEventListener('mousemove', (e) => {
+            cube.rotation.y += -(e.pageX - prevX)/100
+            cube.rotation.x += (e.pageY - prevY)/100
+            prevX = e.pageX
+            prevY = e.pageY
+        })
+        document.getElementsByTagName('body')[0].addEventListener('touchmove', (e) => {
+            cube.rotation.y += -(e.touches[0].clientX - prevX)/100
+            cube.rotation.x += (e.touches[0].clientY - prevY)/100
+            prevX = e.touches[0].clientX
+            prevY = e.touches[0].clientY
+        })
+    </script>
+</body>
+</html>
