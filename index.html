@@ -55,11 +55,15 @@
             })
         }
 
-        let loader = new THREE.FBXLoader()
-        loader.load('models/Retro.fbx', (fbx) => {
-            cubeRotation(fbx)
-            scene.add(fbx)
-        })
+        var light = new THREE.PointLight( 0xff0000, 1, 100 );
+        light.position.set(30, 30, 0);
+        scene.add( light );
+
+        var mtlLoader = new THREE.FBXLoader()
+		mtlLoader.load('models/Retro.fbx', function( obj ) {
+            cubeRotation(obj)
+			scene.add(obj)
+        });
     </script>
 </body>
 </html>
