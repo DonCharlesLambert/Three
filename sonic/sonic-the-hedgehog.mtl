@@ -1,0 +1,55 @@
+# Blender MTL File: 'None'
+# Material Count: 5
+
+newmtl EyeL
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.010000 0.010000 0.010000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd offical_sonic_the_hedgehog_eye_texture_fixed_by_jaysonjeanchannel_d9vhpab-250t.jpg
+
+newmtl EyeR
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.010000 0.010000 0.010000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd offical_sonic_the_hedgehog_eye_texture_fixed_by_jaysonjeanchannel_d9vhpab-250t.jpg
+
+newmtl Fur
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.768627 0.768627 0.768627
+Ks 0.010000 0.010000 0.010000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Bump ea8ceeb495a962519b54b44439ce1d80.png
+map_Kd chr_sonic_body_abd.png
+
+newmtl Metal
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.010000 0.010000 0.010000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Bump ea8ceeb495a962519b54b44439ce1d80.png
+map_Kd d4aeaa644e5f337695f6123650d1c6bd.png
+
+newmtl Skin
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.010000 0.010000 0.010000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Bump ea8ceeb495a962519b54b44439ce1d80.png
+map_Kd chr_sonic_body_abd.png
